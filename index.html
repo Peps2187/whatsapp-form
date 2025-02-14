@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Sales</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 400px; margin: auto; }
+        label, input, select, textarea { display: block; width: 100%; margin-bottom: 10px; }
+        button { background: #25D366; color: white; border: none; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Contact Sales</h2>
+    <form id="contactForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required>
+        
+        <label for="company">Company:</label>
+        <input type="text" id="company" required>
+        
+        <label for="country">Country or Region:</label>
+        <input type="text" id="country" required>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" required>
+        
+        <label for="industry">Industry:</label>
+        <select id="industry" required>
+            <option value="Mining">Mining</option>
+            <option value="Metal Refining">Metal Refining</option>
+            <option value="Aggregates">Aggregates</option>
+            <option value="Other">Other</option>
+        </select>
+        
+        <label for="interest">Area of Interest:</label>
+        <select id="interest" required>
+            <option value="Equipment">Equipment</option>
+            <option value="Aftermarket and Modernization">Aftermarket and Modernization</option>
+            <option value="Plant Units">Plant Units</option>
+        </select>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" rows="6" required></textarea>
+        
+        <button type="button" onclick="sendToWhatsApp()">Send via WhatsApp</button>
+    </form>
+
+    <script>
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const company = document.getElementById('company').value;
+            const country = document.getElementById('country').value;
+            const city = document.getElementById('city').value;
+            const industry = document.getElementById('industry').value;
+            const interest = document.getElementById('interest').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Hello, I am ${name} from ${company}.\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nCity: ${city}\nIndustry: ${industry}\nInterest: ${interest}\nMessage: ${message}`;
+            
+            const whatsappUrl = `https://wa.me/+528119534891?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
